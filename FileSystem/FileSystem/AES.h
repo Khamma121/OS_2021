@@ -18,8 +18,8 @@ void AesEncrypt(unsigned char* message, unsigned char* key);
 void AesDecrypt(unsigned char* message, unsigned char* key);
 int GetOriginalLength(unsigned char* message);
 int GetPaddedLength(unsigned char* message);
-unsigned char* AesEncrypt(unsigned char* message);
-unsigned char* AesDecrypt(unsigned char* message);
+unsigned char* Aes_Encrypt(unsigned char* message, unsigned char* key);
+unsigned char* Aes_Decrypt(unsigned char* message, unsigned char* key);
 void PrintHex(unsigned char* message);
 
 // Declaration of variables
@@ -326,9 +326,8 @@ int GetPaddedLength(unsigned char* message)
 	return PaddedLength;
 }
 
-unsigned char* AesEncrypt(unsigned char* message)
+unsigned char* Aes_Encrypt(unsigned char* message, unsigned char* key)
 {
-	unsigned char key[16] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
 	int OriginalLength = GetOriginalLength(message);
 	int PaddedLength = GetPaddedLength(message);
 	unsigned char* PaddedMessage = (unsigned char*)malloc(PaddedLength * sizeof(unsigned char*));
@@ -344,9 +343,8 @@ unsigned char* AesEncrypt(unsigned char* message)
 	return PaddedMessage;
 }
 
-unsigned char* AesDecrypt(unsigned char* message)
+unsigned char* Aes_Decrypt(unsigned char* message, unsigned char* key)
 {
-	unsigned char key[16] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
 	int OriginalLength = GetOriginalLength(message);
 	int PaddedLength = GetPaddedLength(message);
 	unsigned char* PaddedMessage = (unsigned char*)malloc(PaddedLength * sizeof(unsigned char*));
